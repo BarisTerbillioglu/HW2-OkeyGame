@@ -65,8 +65,13 @@ public class OkeyGame {
      * TODO: check if game still continues, should return true if current player
      * finished the game, use isWinningHand() method of Player to decide
      */
-    public boolean didGameFinish() {
-        return false;
+    public boolean didGameFinish(int index) {
+        if (players[index].isWinningHand(players[index].getTiles())) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     /*

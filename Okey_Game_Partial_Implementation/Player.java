@@ -31,8 +31,63 @@ public class Player {
      * does not disturb the winning condition
      * @return
      */
-    public boolean isWinningHand(){
-        return false;
+    public boolean isWinningHand(Tile[] hand){
+
+        Tile[] chain = new Tile[4];
+        Tile[][] threeChains = new Tile[3][4];
+        int count;
+        int row = 0;
+        boolean check;
+
+        for (int i = 0; i < hand.length; i++) {
+
+            check = true;
+            count = 1;
+            chain[0] = hand[i];
+
+            for (int j = 0; j < hand.length ; j++) {
+
+                if (hand[i].canFormChainWith(hand[j])) {
+
+                    for (int k = 0; k < chain.length; k++) {
+
+                        if(hand[j].compareTo(chain[k]) == 0){
+
+                            check = false;
+
+                        }
+                        
+                    }
+
+                    if(check){
+
+                        chain[count] = hand[j];
+                        count++;
+
+                    }
+                    
+                }
+                
+            }
+
+            if (count == 4) {
+
+                threeChains[row] = chain;
+                row++;
+                
+            }
+
+            chain = new Tile[4];
+            
+        }
+
+        if (threeChains.length == 3) {
+            return true;
+        }
+
+        else{
+            return false;
+        }
     }
 
     public int findPositionOfTile(Tile t) {
