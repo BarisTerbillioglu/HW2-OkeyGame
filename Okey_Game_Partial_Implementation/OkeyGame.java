@@ -131,5 +131,4 @@ public class OkeyGame {
             players[index] = new Player(name);
         }
     }
-
 }

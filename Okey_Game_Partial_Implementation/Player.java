@@ -23,6 +23,39 @@ public class Player {
      */
     public void addTile(Tile t) {
 
+        //satisfying the condition of not having more than 15 tiles
+        if(numberOfTiles <= 15){
+
+            //finding which index to add the tile 
+
+                //temporary defining 
+                 int indexToPlace = 0 ;
+            
+            //adding a count because we shouldn't change the index we found to do placement
+            int count = 0;
+            for(int i = 1 ; i < playerTiles.length - 1 ; i++){
+
+                if((playerTiles[ i - 1 ].value < t.value ) && (playerTiles[ i + 1 ].value >= t.value) && (count == 0 )  ){
+
+                     indexToPlace = i;
+                     count++;
+                    
+                }
+            }
+            //we found the index to do replacement
+
+            // we have to slide the array to
+            for(int startFromEnd = 14 ; startFromEnd > indexToPlace ; startFromEnd --){
+
+                playerTiles[startFromEnd] = playerTiles[startFromEnd - 1 ];
+                
+            }
+            //sliding is over. Now doing the replacement according to index
+
+            playerTiles[ indexToPlace ] = t;
+            
+        }
+
     }
 
     /*
