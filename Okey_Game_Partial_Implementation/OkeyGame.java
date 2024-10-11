@@ -92,6 +92,74 @@ public class OkeyGame {
      * the single tiles and tiles that contribute to the smallest chains.
      */
     public void discardTileForComputer() {
+        
+        boolean isRemoved = true;
+        int removedIndex = -1;
+        //remove dublicates
+        for(int i = 0; i < players[currentPlayerIndex].getTiles().length && isRemoved ; i++){
+            
+            for(int j = 0; j < players[currentPlayerIndex].getTiles().length; j++){
+                
+                if(players[currentPlayerIndex].getTiles()[i].equals(players[currentPlayerIndex].getTiles()[j]) && i != j){
+                    removedIndex = i;
+                    isRemoved = false;
+                }
+                
+            }
+
+        }
+        //if there is no removed tiles: remove single tile
+        if(isRemoved){
+            
+            for(int i = 0; i < players[currentPlayerIndex].getTiles().length && isRemoved ; i++){
+                int equalityCounter = 0;
+                for(int j = 0; j < players[currentPlayerIndex].getTiles().length; j++){
+                    
+                    if(players[currentPlayerIndex].getTiles()[i].getValue() == players[currentPlayerIndex].getTiles()[i].getValue()){
+                        equalityCounter++;
+                    }
+                }
+                if(equalityCounter==1){
+                    removedIndex = i;
+                    isRemoved = false;
+                }
+            }
+        }
+
+        //if there is no single, then remove tile that contribute the smallest chain
+        if(isRemoved){
+            Integer[] chainCounter = new Integer[15];
+            for(int i = 0; i < players[currentPlayerIndex].getTiles().length && isRemoved ; i++){
+                int chainCount = 0;
+                for(int j = 0; j < players[currentPlayerIndex].getTiles().length; j++){
+                    
+                    if(players[currentPlayerIndex].getTiles()[i].getValue() == players[currentPlayerIndex].getTiles()[i].getValue()){
+                        chainCount++;
+                    }
+                    chainCounter[i] = chainCount;
+                }
+            }
+            for(int k = 0; k < chainCounter.length ; k++){
+                if(chainCounter[k] == 2){
+                    removedIndex = k;
+                    isRemoved = false;
+                }
+            }
+            if(isRemoved){
+                for(int k = 0; k < chainCounter.length ; k++){
+                    if(chainCounter[k] == 3){
+                        removedIndex = k;
+                        isRemoved = false;
+                    }
+                }
+
+            }
+
+        }
+
+        System.out.print("Discarded tile is : ");
+        System.out.println(players[currentPlayerIndex].getTiles()[removedIndex]);
+        discardTile(removedIndex);
 
     }
 
