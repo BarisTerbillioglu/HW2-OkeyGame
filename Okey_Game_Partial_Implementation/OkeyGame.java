@@ -35,17 +35,19 @@ public class OkeyGame {
      * this method assumes the tiles are already shuffled
      */
     public void distributeTilesToPlayers() {
+
         System.arraycopy(tiles, 0, players[0].getTiles(), 0, 15);
         System.arraycopy(tiles, 15, players[1].getTiles(), 0, 14);
         System.arraycopy(tiles, 29, players[2].getTiles(), 0, 14);
         System.arraycopy(tiles, 43, players[3].getTiles(), 0, 14);
-        for(int i = 0; i < 53; i++){
-            tiles[i] = null;
-        }
+         for(int i = 0; i < 53; i++){
+             tiles[i] = null;
+         }
         players[0].numberOfTiles = 15;
         players[1].numberOfTiles = 15;
         players[2].numberOfTiles = 15;
         players[3].numberOfTiles = 15;
+
     }
 
     /*
@@ -93,6 +95,7 @@ public class OkeyGame {
      */
     public void shuffleTiles() {
         Random rand = new Random();
+        
         for(int i = 111; i >0 ; i--){
             int index = rand.nextInt(i+1);
             Tile temp  = tiles[i];
@@ -123,19 +126,25 @@ public class OkeyGame {
      */
     public void pickTileForComputer() {
         
-        boolean  notHavingSameTile = true; 
+        boolean  notHavingSameTile = true;
         boolean havingSameValueButDifColor = false;
         Tile[] tilesOfCurrentPlayer = players[currentPlayerIndex].getTiles();
 
-        for(Tile t : tilesOfCurrentPlayer){
-            if((t.value == lastDiscardedTile.value) && t.color == lastDiscardedTile.color){
+        for(int i = 0 ; i < tilesOfCurrentPlayer.length  ; i++ ){
+
+            Tile temporaryTile = tilesOfCurrentPlayer[i];
+
+            if((temporaryTile.value == lastDiscardedTile.value) && temporaryTile.color == lastDiscardedTile.color){
                 notHavingSameTile = false;
             }
         }
 
         if(notHavingSameTile){
-            for(Tile t : tilesOfCurrentPlayer){
-                if(t.value == lastDiscardedTile.value){
+            for(int i = 0 ; i < tilesOfCurrentPlayer.length  ; i++ ){
+
+                Tile temporaryTile = tilesOfCurrentPlayer[i];
+
+                if(temporaryTile.value == lastDiscardedTile.value){
                     havingSameValueButDifColor = true;
                 }
             }
