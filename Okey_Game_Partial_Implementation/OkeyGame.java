@@ -3,7 +3,7 @@ import java.util.Random;
 public class OkeyGame {
 
     Player[] players;
-    Tile[] tiles;
+    public Tile[] tiles;
 
     Tile lastDiscardedTile;
 
@@ -117,6 +117,7 @@ public class OkeyGame {
         if (players[index].isWinningHand(players[index].getTiles())) {
             return true;
         }
+        
         else{
             return false;
         }
@@ -291,5 +292,17 @@ public class OkeyGame {
         if(index >= 0 && index <= 3) {
             players[index] = new Player(name);
         }
+    }
+
+    public boolean areThereAnyTilesLeft(){
+        if (tiles[111] == null) {
+            return false;
+
+        }
+        else{
+
+            return true;
+        }
+        
     }
 }

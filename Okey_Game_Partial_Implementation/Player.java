@@ -54,6 +54,7 @@ public class Player {
      */
     public boolean isWinningHand(Tile[] hand){
 
+        
         Tile[] chain = new Tile[4];
         Tile[][] threeChains = new Tile[3][4];
         int count;
@@ -100,15 +101,25 @@ public class Player {
 
             if (count == 4) {
 
-                if(threeChains[row][0] != null ){
+                if (threeChains[row][0] == null) {
 
-                    if (threeChains[row][0].getValue() != chain[0].getValue()) {
+                    threeChains[0][0] = new Tile(8, 'z');
+                    threeChains[1][0] = new Tile(8, 'z');
+                    threeChains[2][0] = new Tile(8, 'z');
+                    
+                    for (int j = 0; j < threeChains.length; j++) {
                         
-                        threeChains[row] = chain;
-                        row++;
+                        if (threeChains[j][0].getValue() != chain[0].getValue()) {
+                            
+                            threeChains[row] = chain;
+                        }
                     }
 
+                    row++;
                 }
+
+
+                
 
                 
             }
@@ -117,9 +128,9 @@ public class Player {
             
         }
     
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
 
-            for (int j = 0; j < threeChains[0].length; j++) {
+            for (int j = 0; j < 4; j++) {
 
                 if(threeChains[i][j] == null){
 
@@ -136,6 +147,7 @@ public class Player {
         if (winner) {
             return true;
         }
+
 
         else{
             return false;

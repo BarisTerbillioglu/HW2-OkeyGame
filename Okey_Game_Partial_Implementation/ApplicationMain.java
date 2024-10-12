@@ -28,7 +28,23 @@ public class ApplicationMain {
         int playerChoice = -1;
 
         while(gameContinues) {
-            
+
+            if (!game.areThereAnyTilesLeft()) {
+                
+                System.out.println("No tiles left!");
+                System.out.println(game.players[0].getName());
+                game.players[0].displayTiles();
+                System.out.println(game.players[1].getName());
+                game.players[1].displayTiles();
+                System.out.println(game.players[2].getName());
+                game.players[2].displayTiles();
+                System.out.println(game.players[3].getName());
+                game.players[3].displayTiles();
+
+                break;
+                
+            }
+           
             int currentPlayer = game.getCurrentPlayerIndex();
             System.out.println(game.getCurrentPlayerName() + "'s turn.");
             
