@@ -33,7 +33,10 @@ public class OkeyGame {
      * this method assumes the tiles are already shuffled
      */
     public void distributeTilesToPlayers() {
-
+        System.arraycopy(tiles, 0, players[0], 0, 15);
+         System.arraycopy(tiles, 15, players[1], 0, 14);
+         System.arraycopy(tiles, 29, players[2], 0, 14);
+         System.arraycopy(tiles, 43, players[3], 0, 14);
     }
 
     /*
