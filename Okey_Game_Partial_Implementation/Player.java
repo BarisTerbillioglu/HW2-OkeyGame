@@ -95,28 +95,31 @@ public class Player {
 
             for (int j = 0; j < hand.length ; j++) {
 
-                if (hand[i].canFormChainWith(hand[j])) {
-
-                    for (int k = 0; k < chain.length; k++) {
-
-                        if (chain[k] != null) {
-                            
-                            if(hand[j].compareTo(chain[k]) == 0){
+                if (hand[i] != null) {
+                    
+                    if (hand[i].canFormChainWith(hand[j])) {
     
-                                check = false;
+                        for (int k = 0; k < chain.length; k++) {
     
+                            if (chain[k] != null) {
+                                
+                                if(hand[j].compareTo(chain[k]) == 0){
+        
+                                    check = false;
+        
+                                }
                             }
+                            
+                        }
+    
+                        if(check){
+    
+                            chain[count] = hand[j];
+                            count++;
+    
                         }
                         
                     }
-
-                    if(check){
-
-                        chain[count] = hand[j];
-                        count++;
-
-                    }
-                    
                 }
                 
             }
