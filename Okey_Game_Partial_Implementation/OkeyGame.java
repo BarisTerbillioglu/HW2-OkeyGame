@@ -237,8 +237,13 @@ public class OkeyGame {
 
         System.out.print("Discarded tile is : ");
         System.out.println(players[currentPlayerIndex].getTiles()[removedIndex]);
-        discardTile(removedIndex);
 
+
+        lastDiscardedTile = players[currentPlayerIndex].getTiles()[removedIndex];
+        for(int i = removedIndex  ; i < 14; i++){
+            players[currentPlayerIndex].getTiles()[i] = players[currentPlayerIndex].getTiles()[i + 1];
+        }
+        players[currentPlayerIndex].getTiles()[14] = null;
     }
 
     /*
