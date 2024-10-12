@@ -85,6 +85,7 @@ public class Player {
         int count;
         int row = 0;
         boolean check;
+        boolean winner = false;
 
         for (int i = 0; i < hand.length; i++) {
 
@@ -98,10 +99,13 @@ public class Player {
 
                     for (int k = 0; k < chain.length; k++) {
 
-                        if(hand[j].compareTo(chain[k]) == 0){
-
-                            check = false;
-
+                        if (chain[k] != null) {
+                            
+                            if(hand[j].compareTo(chain[k]) == 0){
+    
+                                check = false;
+    
+                            }
                         }
                         
                     }
@@ -127,8 +131,13 @@ public class Player {
             chain = new Tile[4];
             
         }
+        if (threeChains[2][0] == null) {
 
-        if (threeChains.length == 3) {
+            winner = true;
+            
+        }
+
+        if (winner) {
             return true;
         }
 
