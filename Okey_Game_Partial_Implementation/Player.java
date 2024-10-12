@@ -127,8 +127,16 @@ public class Player {
 
             if (count == 4) {
 
-                threeChains[row] = chain;
-                row++;
+                if(threeChains[row][0] != null ){
+
+                    if (threeChains[row][0].getValue() != chain[0].getValue()) {
+                        
+                        threeChains[row] = chain;
+                        row++;
+                    }
+
+                }
+
                 
             }
 
