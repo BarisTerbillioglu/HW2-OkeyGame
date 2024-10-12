@@ -181,7 +181,7 @@ public class OkeyGame {
 
                 if(players[currentPlayerIndex].getTiles()[i] != null){
 
-                    if(players[currentPlayerIndex].getTiles()[i].equals(players[currentPlayerIndex].getTiles()[j]) && i != j){
+                    if(players[currentPlayerIndex].getTiles()[i].getColor() == players[currentPlayerIndex].getTiles()[j].getColor() && players[currentPlayerIndex].getTiles()[i].getValue() == players[currentPlayerIndex].getTiles()[j].getValue() && i != j){
                         removedIndex = i;
                         isRemoved = false;
                     }
@@ -222,14 +222,14 @@ public class OkeyGame {
                     chainCounter[i] = chainCount;
                 }
             }
-            for(int k = 0; k < chainCounter.length ; k++){
+            for(int k = 0; k < chainCounter.length && isRemoved; k++){
                 if(chainCounter[k] == 2){
                     removedIndex = k;
                     isRemoved = false;
                 }
             }
             if(isRemoved){
-                for(int k = 0; k < chainCounter.length ; k++){
+                for(int k = 0; k < chainCounter.length && isRemoved ; k++){
                     if(chainCounter[k] == 3){
                         removedIndex = k;
                         isRemoved = false;
