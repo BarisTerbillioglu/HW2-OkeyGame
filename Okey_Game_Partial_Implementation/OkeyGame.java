@@ -153,6 +153,9 @@ public class OkeyGame {
         if(havingSameValueButDifColor){
             getLastDiscardedTile();
         }
+        else{
+            getTopTile();
+        }
 
     }
 
@@ -170,12 +173,14 @@ public class OkeyGame {
         for(int i = 0; i < players[currentPlayerIndex].getTiles().length && isRemoved ; i++){
             
             for(int j = 0; j < players[currentPlayerIndex].getTiles().length; j++){
-                
-                if(players[currentPlayerIndex].getTiles()[i].equals(players[currentPlayerIndex].getTiles()[j]) && i != j){
-                    removedIndex = i;
-                    isRemoved = false;
+
+                if(players[currentPlayerIndex].getTiles()[i] != null){
+
+                    if(players[currentPlayerIndex].getTiles()[i].equals(players[currentPlayerIndex].getTiles()[j]) && i != j){
+                        removedIndex = i;
+                        isRemoved = false;
+                    }
                 }
-                
             }
 
         }
@@ -185,10 +190,12 @@ public class OkeyGame {
             for(int i = 0; i < players[currentPlayerIndex].getTiles().length && isRemoved ; i++){
                 int equalityCounter = 0;
                 for(int j = 0; j < players[currentPlayerIndex].getTiles().length; j++){
-                    
-                    if(players[currentPlayerIndex].getTiles()[i].getValue() == players[currentPlayerIndex].getTiles()[i].getValue()){
-                        equalityCounter++;
-                    }
+                    if(players[currentPlayerIndex].getTiles()[i] != null){
+
+                        if(players[currentPlayerIndex].getTiles()[i].getValue() == players[currentPlayerIndex].getTiles()[i].getValue()){
+                            equalityCounter++;
+                        }
+                    }   
                 }
                 if(equalityCounter==1){
                     removedIndex = i;

@@ -48,12 +48,13 @@ public class Player {
             //adding a count because we shouldn't change the index we found to do placement
             int count = 0;
             for(int i = 1 ; i < playerTiles.length - 1 ; i++){
+                if(playerTiles[ i - 1 ] != null && playerTiles[ i + 1 ] != null){
+                    if((playerTiles[ i - 1 ].value < t.value ) && (playerTiles[ i + 1 ].value >= t.value) && (count == 0 )  ){
 
-                if((playerTiles[ i - 1 ].value < t.value ) && (playerTiles[ i + 1 ].value >= t.value) && (count == 0 )  ){
-
-                     indexToPlace = i;
-                     count++;
-                    
+                        indexToPlace = i;
+                        count++;
+                       
+                   }
                 }
             }
             //we found the index to do replacement
