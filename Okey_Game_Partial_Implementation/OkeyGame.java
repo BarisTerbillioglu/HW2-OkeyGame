@@ -192,7 +192,7 @@ public class OkeyGame {
                 for(int j = 0; j < players[currentPlayerIndex].getTiles().length; j++){
                     if(players[currentPlayerIndex].getTiles()[i] != null){
 
-                        if(players[currentPlayerIndex].getTiles()[i].getValue() == players[currentPlayerIndex].getTiles()[i].getValue()){
+                        if(players[currentPlayerIndex].getTiles()[i].getValue() == players[currentPlayerIndex].getTiles()[j].getValue()){
                             equalityCounter++;
                         }
                     }   
