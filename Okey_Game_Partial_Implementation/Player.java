@@ -98,10 +98,13 @@ public class Player {
 
                     for (int k = 0; k < chain.length; k++) {
 
-                        if(hand[j].compareTo(chain[k]) == 0){
-
-                            check = false;
-
+                        if (chain[k] != null) {
+                            
+                            if(hand[j].compareTo(chain[k]) == 0){
+    
+                                check = false;
+    
+                            }
                         }
                         
                     }
