@@ -83,6 +83,37 @@ public class OkeyGame {
      */
     public void pickTileForComputer() {
 
+        // determining whether the computer needs to draw the discarded tile or draw the tile from the stack
+        // checking if lastDiscardedTile would increase the chain
+
+        // checking if we have same number but different colour versions of lastDiscardedTile
+        boolean shouldPickLastDiscarded = false;
+        Tile[] tilesOfCurrentPlayer = players[currentPlayerIndex].getTiles();
+        for(Tile t : tilesOfCurrentPlayer){
+
+            //properties of t
+            char colorOfT = t.getColor();
+            int valueOfT = t.getValue();
+
+            //properties of last discarded
+            char colorOfLastDiscarded = lastDiscardedTile.getColor();
+            int valueOfLastDiscarded = lastDiscardedTile.getValue();
+
+            if((colorOfT != colorOfLastDiscarded) && !(valueOfT == valueOfLastDiscarded) ){
+                shouldPickLastDiscarded = true;
+            }  
+        }
+
+        if(shouldPickLastDiscarded){
+
+            getLastDiscardedTile();
+
+        }
+
+        else{
+            getTopTile();
+        }
+
     }
 
     /*
