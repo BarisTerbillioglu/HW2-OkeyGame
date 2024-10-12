@@ -198,4 +198,22 @@ public class Player {
     public String getName() {
         return playerName;
     }
+    public void sortTiles(){
+        
+        Tile[] tempTiles = new Tile[playerTiles.length]; 
+        int posToSetTile = 0;
+        for(int i = 1 ; i < 8 ; i++){
+
+            for(int a = 0 ; a < playerTiles.length ; a++){
+                
+                if((playerTiles[a] != null) && playerTiles[a].value == i){
+
+                    tempTiles[posToSetTile] = playerTiles[a];
+                    posToSetTile++;
+                }   
+        }
+            
+        }
+        playerTiles = tempTiles;
+    }
 }

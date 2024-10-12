@@ -48,6 +48,11 @@ public class OkeyGame {
         players[2].numberOfTiles = 15;
         players[3].numberOfTiles = 15;
 
+        players[0].sortTiles();
+        players[1].sortTiles();
+        players[2].sortTiles();
+        players[3].sortTiles();
+
     }
 
     /*
