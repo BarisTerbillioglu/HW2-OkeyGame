@@ -130,7 +130,7 @@ public class OkeyGame {
         boolean havingSameValueButDifColor = false;
         Tile[] tilesOfCurrentPlayer = players[currentPlayerIndex].getTiles();
 
-        for(int i = 0 ; i < tilesOfCurrentPlayer.length  ; i++ ){
+        for(int i = 0 ; i < tilesOfCurrentPlayer.length -1 ; i++ ){
 
             Tile temporaryTile = tilesOfCurrentPlayer[i];
 
@@ -140,7 +140,7 @@ public class OkeyGame {
         }
 
         if(notHavingSameTile){
-            for(int i = 0 ; i < tilesOfCurrentPlayer.length  ; i++ ){
+            for(int i = 0 ; i < tilesOfCurrentPlayer.length - 1 ; i++ ){
 
                 Tile temporaryTile = tilesOfCurrentPlayer[i];
 
