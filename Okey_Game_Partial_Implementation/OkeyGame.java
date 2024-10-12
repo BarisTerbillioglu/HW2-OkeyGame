@@ -58,7 +58,12 @@ public class OkeyGame {
      * TODO: should randomly shuffle the tiles array before game starts
      */
     public void shuffleTiles() {
-
+        Random rand = new Random();
+        for(int i = 111; i >0 ; i--){
+            int index = rand.nextInt(i+1);
+            int temp  = tiles[i];
+            tiles[i] = tiles[index];
+            tiles[index]= temp;
     }
 
     /*
