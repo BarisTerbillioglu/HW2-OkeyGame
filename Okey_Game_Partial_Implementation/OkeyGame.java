@@ -42,6 +42,10 @@ public class OkeyGame {
         for(int i = 0; i < 53; i++){
             tiles[i] = null;
         }
+        players[0].numberOfTiles = 15;
+        players[1].numberOfTiles = 15;
+        players[2].numberOfTiles = 15;
+        players[3].numberOfTiles = 15;
     }
 
     /*
