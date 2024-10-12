@@ -85,6 +85,7 @@ public class Player {
         int count;
         int row = 0;
         boolean check;
+        boolean winner = false;
 
         for (int i = 0; i < hand.length; i++) {
 
@@ -130,8 +131,13 @@ public class Player {
             chain = new Tile[4];
             
         }
+        if (threeChains[2][0] == null) {
 
-        if (threeChains.length == 3) {
+            winner = true;
+            
+        }
+
+        if (winner) {
             return true;
         }
 
