@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class OkeyGame {
 
     Player[] players;
@@ -34,9 +36,9 @@ public class OkeyGame {
      */
     public void distributeTilesToPlayers() {
         System.arraycopy(tiles, 0, players[0], 0, 15);
-         System.arraycopy(tiles, 15, players[1], 0, 14);
-         System.arraycopy(tiles, 29, players[2], 0, 14);
-         System.arraycopy(tiles, 43, players[3], 0, 14);
+        System.arraycopy(tiles, 15, players[1], 0, 14);
+        System.arraycopy(tiles, 29, players[2], 0, 14);
+        System.arraycopy(tiles, 43, players[3], 0, 14);
     }
 
     /*
@@ -45,7 +47,9 @@ public class OkeyGame {
      * it should return the toString method of the tile so that we can print what we picked
      */
     public String getLastDiscardedTile() {
-        return null;
+        Player player = players[currentPlayerIndex];
+        player.addTile(lastDiscardedTile);
+        return lastDiscardedTile.toString();
     }
 
     /*
@@ -54,7 +58,27 @@ public class OkeyGame {
      * it should return the toString method of the tile so that we can print what we picked
      */
     public String getTopTile() {
-        return null;
+        Player player = players[currentPlayerIndex];
+        Tile topTile;
+        boolean isGotten = false;
+        int lastTileIndex = 0;
+        String topTileCopy;
+        for(int i = 0; i < 112; i++){
+            if(tiles[i] != null){
+                topTile = tiles[i];
+                player.addTile(topTile);
+                lastTileIndex = i;
+                isGotten = true;
+                break;
+            }
+        }
+        if(isGotten){
+            topTileCopy = tiles[lastTileIndex].toString();
+            tiles[lastTileIndex] = null;
+        }else{
+            return "No more tiles left";
+        }
+        return topTileCopy;
     }
 
     /*
