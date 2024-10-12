@@ -35,10 +35,13 @@ public class OkeyGame {
      * this method assumes the tiles are already shuffled
      */
     public void distributeTilesToPlayers() {
-        System.arraycopy(tiles, 0, players[0], 0, 15);
-        System.arraycopy(tiles, 15, players[1], 0, 14);
-        System.arraycopy(tiles, 29, players[2], 0, 14);
-        System.arraycopy(tiles, 43, players[3], 0, 14);
+        System.arraycopy(tiles, 0, players[0].getTiles(), 0, 15);
+        System.arraycopy(tiles, 15, players[1].getTiles(), 0, 14);
+        System.arraycopy(tiles, 29, players[2].getTiles(), 0, 14);
+        System.arraycopy(tiles, 43, players[3].getTiles(), 0, 14);
+        for(int i = 0; i < 53; i++){
+            tiles[i] = null;
+        }
     }
 
     /*
@@ -91,6 +94,7 @@ public class OkeyGame {
             int temp  = tiles[i];
             tiles[i] = tiles[index];
             tiles[index]= temp;
+        }
     }
 
     /*
@@ -223,7 +227,12 @@ public class OkeyGame {
      * that player's tiles
      */
     public void discardTile(int tileIndex) {
-
+        lastDiscardedTile = players[0].getTiles()[tileIndex];
+        for(int i = tileIndex  ; i < 14; i++){
+            players[0].getTiles()[i] = players[0].getTiles()[i + 1];
+        }
+        players[0].getTiles()[14] = null;
+        
     }
 
     public void displayDiscardInformation() {
