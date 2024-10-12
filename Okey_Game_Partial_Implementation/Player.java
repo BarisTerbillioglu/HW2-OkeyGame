@@ -131,9 +131,17 @@ public class Player {
             chain = new Tile[4];
             
         }
-        if (threeChains[2][0] == null) {
+    
+        for (int i = 0; i < threeChains.length; i++) {
 
-            winner = true;
+            for (int j = 0; j < threeChains[0].length; j++) {
+
+                if(threeChains[i][j] == null){
+
+                    winner = false;
+                }
+                
+            }
             
         }
 
