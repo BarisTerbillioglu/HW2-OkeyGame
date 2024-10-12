@@ -114,36 +114,27 @@ public class OkeyGame {
      * the current status. Print whether computer picks from tiles or discarded ones.
      */
     public void pickTileForComputer() {
-
-        // determining whether the computer needs to draw the discarded tile or draw the tile from the stack
-        // checking if lastDiscardedTile would increase the chain
-
-        // checking if we have same number but different colour versions of lastDiscardedTile
-        boolean shouldPickLastDiscarded = false;
+        
+        boolean  notHavingSameTile = true; 
+        boolean havingSameValueButDifColor = false;
         Tile[] tilesOfCurrentPlayer = players[currentPlayerIndex].getTiles();
+
         for(Tile t : tilesOfCurrentPlayer){
-
-            //properties of t
-            char colorOfT = t.getColor();
-            int valueOfT = t.getValue();
-
-            //properties of last discarded
-            char colorOfLastDiscarded = lastDiscardedTile.getColor();
-            int valueOfLastDiscarded = lastDiscardedTile.getValue();
-
-            if((colorOfT != colorOfLastDiscarded) && !(valueOfT == valueOfLastDiscarded) ){
-                shouldPickLastDiscarded = true;
-            }  
+            if((t.value == lastDiscardedTile.value) && t.color == lastDiscardedTile.color){
+                notHavingSameTile = false;
+            }
         }
 
-        if(shouldPickLastDiscarded){
+        if(notHavingSameTile){
+            for(Tile t : tilesOfCurrentPlayer){
+                if(t.value == lastDiscardedTile.value){
+                    havingSameValueButDifColor = true;
+                }
+            }
+        }
 
+        if(havingSameValueButDifColor){
             getLastDiscardedTile();
-
-        }
-
-        else{
-            getTopTile();
         }
 
     }
