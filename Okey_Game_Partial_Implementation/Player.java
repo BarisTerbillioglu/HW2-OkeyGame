@@ -62,6 +62,8 @@ public class Player {
         boolean check;
         boolean winner = false;
 
+        // Checking every tile in plaayer's tiles. If a tile can form a chain with another tile, adds them to a chain array.
+        // Count shows the length of the chain.
         for (int i = 0; i < hand.length; i++) {
 
             check = true;
@@ -78,6 +80,7 @@ public class Player {
     
                             if (chain[k] != null) {
                                 
+                                // Checking if two tiles are same or not.
                                 if(hand[j].compareTo(chain[k]) == 0){
         
                                     check = false;
@@ -99,6 +102,7 @@ public class Player {
                 
             }
 
+            // Checks if the new chain is same with one of the previous chains. If not adds to threeChains.
             if (count == 4) {
 
                 if (threeChains[row][0] == null) {
@@ -128,6 +132,7 @@ public class Player {
             
         }
     
+        // Checking if every index in the threeChains 2d array is full or not.
         for (int i = 0; i < 3; i++) {
 
             for (int j = 0; j < 4; j++) {
