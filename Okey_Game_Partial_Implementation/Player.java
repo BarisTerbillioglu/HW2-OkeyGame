@@ -164,6 +164,9 @@ public class Player {
         return tilePosition;
     }
 
+    /**
+     * display player's tiles 
+     */
     public void displayTiles() {
         System.out.println(playerName + "'s Tiles:");
         for (int i = 0; i < numberOfTiles; i++) {
@@ -186,6 +189,9 @@ public class Player {
     public String getName() {
         return playerName;
     }
+    /**
+     * A method to sort tiles for players  
+     */
     public void sortTiles(){
         
         Tile[] tempTiles = new Tile[playerTiles.length]; 
